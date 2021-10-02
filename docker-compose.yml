@@ -1,0 +1,39 @@
+version: "3"
+services:
+  node:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend/app
+    container_name: backend_HW7
+    env_file:
+      - ./backend/.env
+    command: ["/bin/sh", "-c", "yarn install && yarn dev"]
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4.4.5
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo:/data/db
+    container_name: database_HW7
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=homestead
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/fronted/app
+    container_name: frontend_HW7
+    command: ["/bin/sh", "-c", "yarn install && yarn dev"]
+volumes:
+  mongo:
+networks:
+  default:
+    name: network_HW7
