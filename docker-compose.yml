@@ -16,13 +16,13 @@ services:
   mongo:
     image: mongo:4.4.5
     ports:
-      - "27018:27017"
+      - "27017:27017"
     volumes:
       - mongo:/data/db
     container_name: database_HW7
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=username
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_USERNAME=homestead
+      - MONGO_INITDB_ROOT_PASSWORD=secret
 
   frontend:
     build: ./frontend
