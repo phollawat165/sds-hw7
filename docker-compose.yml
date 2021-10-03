@@ -21,8 +21,8 @@ services:
       - mongo:/data/db
     container_name: database_HW7
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=homestead
-      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=password
 
   frontend:
     build: ./frontend
